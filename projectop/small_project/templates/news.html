@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<!--news.html-->
+<head>
+    <title>폭염 주의보</title>
+ <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+-->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+    }
+    .container {
+        background-color: brown;
+        text-align: center;
+        padding: 20px;
+        color: white;
+    }
+    .child {
+        background-color: burlywood;
+        color: black;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #F2F2F2;
+    }
+    tr:hover {
+        background-color: #F5F5F5;
+    }
+</style>
+</head>
+<body>
+    <div class="container" style = "background-color:brown; text-align:center;"" >
+        <h1>폭염 주의보</h1>
+    </div>
+    <div class = "child" style = "background-color:burlywood; color:black; padding:20px">
+    <table>
+        <thead>
+            <tr>
+                {% for key in data%}
+                <th>{{key}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {%for key in data%}
+                    {% if key == 'Description' %}
+                        <td>{%for data in data[key][0]%} {{data}}<br>{% endfor %}</td>
+                    {%else%}
+                        <td>{{data[key][0]}}</td>
+                    {%endif%}
+                {% endfor %}
+            </tr>
+            <tr>
+                {%for key in data%}
+                    {% if key == 'Description' %}
+                        <td>{%for data in data[key][1]%} {{data}}<br>{% endfor %}</td>
+                    {%else%}
+                        <td>{{data[key][1]}}</td>
+                    {%endif%}
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</form>
+</body>
+</html>
